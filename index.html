@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salão Deslumbre | Xai-Xai</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#D4AF37;--gold2:#c9a227;--bg:#0a0a0a;--card:#141414;--border:#2a2a2a}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#eee;line-height:1.5}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* NAV */
+.nav{background:#000;border-bottom:1px solid var(--gold);position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;color:var(--gold)}
+.logo span{font-size:26px}
+.nav-links{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+.nav-links a:hover{color:var(--gold)}
+.btn-outline{border:1.5px solid var(--gold);color:var(--gold);padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600}
+.btn-outline:hover{background:var(--gold);color:#000}
+.btn-gold{background:var(--gold);color:#000;padding:10px 22px;border-radius:6px;font-weight:700;font-size:14px;border:none;cursor:pointer;display:inline-block}
+.btn-gold:hover{background:#e0c04a}
+.btn-ghost{border:1.5px solid #555;color:#ccc;padding:10px 22px;border-radius:6px;font-size:14px;display:inline-block}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+/* HERO */
+.hero{text-align:center;padding:70px 20px 50px;background:linear-gradient(180deg,#0a0a0a 0%,#111 100%)}
+.hero h1{font-size:clamp(28px,5vw,48px);color:var(--gold);margin-bottom:12px;letter-spacing:.5px}
+.hero p{color:#aaa;max-width:560px;margin:0 auto 24px;font-size:15px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.loc-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:13px;color:var(--gold)}
+
+/* SECTIONS */
+.section{max-width:1100px;margin:0 auto;padding:48px 20px}
+.section-title{text-align:center;margin-bottom:8px}
+.section-title h2{color:var(--gold);font-size:26px}
+.section-title p{color:#888;font-size:14px;margin-top:4px}
+
+/* SERVICES */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.svc{background:var(--card);border:1px solid var(--gold);border-radius:10px;padding:22px 18px;text-align:center}
+.svc .icon{font-size:28px;margin-bottom:8px}
+.svc h3{color:var(--gold);font-size:16px;margin-bottom:6px}
+.svc p{color:#999;font-size:13px;margin-bottom:10px}
+.svc .price{color:var(--gold);font-weight:700;font-size:14px}
+
+/* GALLERY - proportional, no zoom */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.g-item{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.g-item .img-wrap{height:160px;overflow:hidden;background:#111}
+.g-item img{width:100%;height:100%;object-fit:cover;object-position:center}
+.g-item .cap{padding:10px;text-align:center}
+.g-item .cap strong{display:block;font-size:13px;color:#fff}
+.g-item .cap span{display:block;font-size:12px;color:var(--gold);font-weight:700;margin-top:3px}
+
+/* TEAM */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.member{background:var(--card);border:1px solid var(--gold);border-radius:10px;padding:20px 12px;text-align:center}
+.member .av{width:52px;height:52px;border-radius:50%;background:var(--gold);color:#000;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.member h4{font-size:13px;color:#fff;margin-bottom:2px}
+.member .num{font-size:11px;color:#888}
+.member .role{font-size:12px;color:var(--gold);margin-top:6px;font-weight:600}
+
+/* TESTIMONIALS */
+.recs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.rec{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px}
+.rec .stars{color:var(--gold);margin-bottom:8px;font-size:14px}
+.rec p{color:#bbb;font-size:13px;font-style:italic;margin-bottom:10px}
+.rec strong{color:var(--gold);font-size:12px}
+
+/* FOOTER */
+footer{background:#000;border-top:1px solid var(--border);padding:40px 20px 20px;margin-top:40px}
+.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}
+.foot-grid h4{color:var(--gold);margin-bottom:12px;font-size:15px}
+.foot-grid p,.foot-grid li{color:#999;font-size:13px;line-height:1.7}
+.foot-grid ul{list-style:none}
+.foot-bottom{max-width:1100px;margin:28px auto 0;padding-top:16px;border-top:1px solid #222;text-align:center;color:#555;font-size:12px}
+
+@media(max-width:768px){
+  .services,.gallery,.team,.recs{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .g-item .img-wrap{height:140px}
+}
+@media(max-width:480px){
+  .services,.gallery,.team,.recs{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo"><span>💈</span> Salão Deslumbre</div>
+    <div class="nav-links">
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#equipa">Equipa</a>
+      <a href="#contactos">Contactos</a>
+    </div>
+    <a href="#contactos" class="btn-outline">Marcar Corte</a>
+  </div>
+</nav>
+
+<section class="hero" id="inicio">
+  <h1>Estilo. Precisão. Tradição.</h1>
+  <p>A sua barbearia de confiança em Xai-Xai — cortes modernos, atendimento profissional e cuidado com o seu visual.</p>
+  <div class="hero-btns">
+    <a href="#contactos" class="btn-gold">Agendar Agora</a>
+    <a href="#servicos" class="btn-ghost">Ver Serviços</a>
+  </div>
+  <div class="loc-badge">📍 Xai-Xai · Bairro 2, Marien Ngouabi</div>
+</section>
+
+<section class="section" id="servicos">
+  <div class="section-title">
+    <h2>Nossos Serviços</h2>
+    <p>Preços claros e acessíveis — a partir de 30 MT</p>
+  </div>
+  <div class="services">
+    <div class="svc">
+      <div class="icon">✂️</div>
+      <h3>Corte Clássico</h3>
+      <p>Corte simples e limpo</p>
+      <div class="price">30 MT</div>
+    </div>
+    <div class="svc">
+      <div class="icon">⭐</div>
+      <h3>Corte + Fade / Design</h3>
+      <p>Degradê, linha e estilos modernos</p>
+      <div class="price">40 MT</div>
+    </div>
+    <div class="svc">
+      <div class="icon">🧔</div>
+      <h3>Barba Completa</h3>
+      <p>Aparo, modelagem e acabamento</p>
+      <div class="price">40 MT</div>
+    </div>
+    <div class="svc">
+      <div class="icon">✂️</div>
+      <h3>Corte + Barba</h3>
+      <p>Pacote completo cabelo e barba</p>
+      <div class="price">60 MT</div>
+    </div>
+    <div class="svc">
+      <div class="icon">👶</div>
+      <h3>Corte Infantil</h3>
+      <p>Até 12 anos</p>
+      <div class="price">35 MT</div>
+    </div>
+    <div class="svc">
+      <div class="icon">🧴</div>
+      <h3>Tratamento Capilar</h3>
+      <p>Hidratação e cuidados</p>
+      <div class="price">70 MT</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="galeria">
+  <div class="section-title">
+    <h2>Galeria</h2>
+    <p>Resultados e produtos do salão</p>
+  </div>
+  <div class="gallery">
+    <div class="g-item">
+      <div class="img-wrap"><img src="images/barbeiro1.jpg" alt="Corte profissional"></div>
+      <div class="cap"><strong>Corte Clássico</strong><span>30 MT</span></div>
+    </div>
+    <div class="g-item">
+      <div class="img-wrap"><img src="images/corte1.jpg" alt="Design"></div>
+      <div class="cap"><strong>Design / Fade</strong><span>40 MT</span></div>
+    </div>
+    <div class="g-item">
+      <div class="img-wrap"><img src="images/corte2.jpg" alt="Fade"></div>
+      <div class="cap"><strong>Fade Médio</strong><span>40 MT</span></div>
+    </div>
+    <div class="g-item">
+      <div class="img-wrap"><img src="images/produtos1.jpg" alt="Produtos"></div>
+      <div class="cap"><strong>Pomadas &amp; Óleos</strong><span>desde 50 MT</span></div>
+    </div>
+    <div class="g-item">
+      <div class="img-wrap"><img src="images/produtos2.jpg" alt="Esmaltes"></div>
+      <div class="cap"><strong>Unhas &amp; Esmaltes</strong><span>desde 40 MT</span></div>
+    </div>
+    <div class="g-item">
+      <div class="img-wrap"><img src="images/produtos3.jpg" alt="Tratamentos"></div>
+      <div class="cap"><strong>Tratamento Capilar</strong><span>70 MT</span></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <h2>O Que Dizem os Clientes</h2>
+    <p>Recomendações reais</p>
+  </div>
+  <div class="recs">
+    <div class="rec">
+      <div class="stars">★★★★★</div>
+      <p>"Melhor fade que já fiz em Xai-Xai. Preço justo e atendimento excelente."</p>
+      <strong>— Carlos M.</strong>
+    </div>
+    <div class="rec">
+      <div class="stars">★★★★★</div>
+      <p>"Fui indicado por um amigo. Cortei e fiquei muito satisfeito. Recomendo!"</p>
+      <strong>— João P.</strong>
+    </div>
+    <div class="rec">
+      <div class="stars">★★★★★</div>
+      <p>"Ambiente bom, profissionais pacientes. Já sou cliente fixo do Deslumbre."</p>
+      <strong>— Ana S.</strong>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="equipa">
+  <div class="section-title">
+    <h2>Nossa Equipa</h2>
+    <p>Profissionais dedicados para o seu estilo</p>
+  </div>
+  <div class="team">
+    <div class="member">
+      <div class="av">JF</div>
+      <h4>JOÃO FRANCISCO</h4>
+      <div class="num">N°33</div>
+      <div class="role">Gerente Geral</div>
+    </div>
+    <div class="member">
+      <div class="av">KS</div>
+      <h4>KELVIN SÉRGIO</h4>
+      <div class="num">N°35</div>
+      <div class="role">Barbeiro Principal</div>
+    </div>
+    <div class="member">
+      <div class="av">LL</div>
+      <h4>LEOVIGILDO LANGA</h4>
+      <div class="num">N°37</div>
+      <div class="role">Designer de Cortes</div>
+    </div>
+    <div class="member">
+      <div class="av">RM</div>
+      <h4>RIVALDO MANUEL</h4>
+      <div class="num">N°53</div>
+      <div class="role">Especialista em Barba</div>
+    </div>
+    <div class="member">
+      <div class="av">RA</div>
+      <h4>ROD AUGUSTO</h4>
+      <div class="num">N°54</div>
+      <div class="role">Atendimento ao Cliente</div>
+    </div>
+    <div class="member">
+      <div class="av">SJ</div>
+      <h4>SILVA JULIÃO</h4>
+      <div class="num">N°56</div>
+      <div class="role">Marketing e Finanças</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contactos">
+  <div class="foot-grid">
+    <div>
+      <h4>Salão Deslumbre</h4>
+      <p>Qualidade, estilo e confiança. A sua barbearia de referência em Xai-Xai.</p>
+      <p style="margin-top:10px;color:var(--gold)">📍 Xai-Xai, Bairro 2, Marien Ngouabi</p>
+    </div>
+    <div>
+      <h4>Contactos</h4>
+      <ul>
+        <li>📞 +258 84 120 5426</li>
+        <li>💬 WhatsApp: +258 84 120 5426</li>
+        <li>🕐 Seg – Sáb: 08h – 18h</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Siga-nos</h4>
+      <p>Facebook · Instagram · WhatsApp</p>
+      <p style="margin-top:12px"><a href="https://wa.me/258841205426" class="btn-gold" style="font-size:13px;padding:8px 14px">Falar no WhatsApp</a></p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    © 2026 Salão Deslumbre · Xai-Xai · Todos os direitos reservados
+  </div>
+</footer>
+
+</body>
+</html>
